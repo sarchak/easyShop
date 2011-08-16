@@ -1,11 +1,11 @@
 Shopcircuit::Application.routes.draw do
-  get "pages/home"
+  match '/about', :to => 'pages#about'
+  match '/contact', :to => 'pages#contact'
+  root :to => 'pages#home'
 
-  get "pages/about"
-
-  get "pages/help"
-
-  get "pages/contact"
+  match '/help', :to => 'pages#help'
+   
+  get "pages/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

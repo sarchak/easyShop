@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Shopcircuit | <%= @title %></title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+    <head>
+        <title>Shopcircuit | <%= @title %></title>
+            <%= csrf_meta_tag %>
+            <!--[if lt IE 9]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+            <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+            <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
+            <!--[if lt IE 8]>
+                <%= stylesheet_link_tag 'blueprint/ie' %>
+            <![endif]-->
+            <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+            
 
-<%= yield %>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+            <img alt="Sample App" class="round" src="/images/shopping-cart.jpg" />
+            <nav class="round">
+            <ul>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "Sign in", '#' %></li>
+            </ul>
+            </nav>
+            </header>
+            <section class="round">
+                <%= yield %>
+            </section>
+            <footer>
+                <nav class="round">
+                <ul>
+                    <li><%= link_to "About", about_path %></li>
+                    <li><%= link_to "Contact", contact_path %></li>
+                </ul>
+                </nav>
+            </footer>
+</ul>
+</nav>
+</footer>
 
-</body>
+        </div>
+    </body>
 </html>
+
+
+
