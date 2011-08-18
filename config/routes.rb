@@ -1,5 +1,8 @@
 Shopcircuit::Application.routes.draw do
+  resources :users
+
   get "users/new"
+  get "users/show"
   match '/signup', :to => 'users#new'
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
