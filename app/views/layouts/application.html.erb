@@ -12,8 +12,9 @@
                 <%= stylesheet_link_tag 'blueprint/ie' %>
             <![endif]-->
             <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-            
-
+            <%= javascript_include_tag :defaults %>
+           
+ 
     </head>
     <body>
         <div class="container">
@@ -23,12 +24,24 @@
             <ul>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Help", help_path %></li>
-            <li><%= link_to "Sign in", '#' %></li>
+             <% if signed_in? %>
+              <li><%= link_to "Profile", current_user %></li>
+             <% end %>
+            <% if signed_in? %>
+              <li><%= link_to "Sign Out", signout_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", signin_path %></li>
+            <% end %>
             </ul>
             </nav>
             </header>
             <section class="round">
+                <% flash.each do |key, value| %>
+                <%= content_tag(:div, value, :class => "flash #{key}") %>
+                <% end %>
+
                 <%= yield %>
+                <%= yield :scripts %>
             </section>
             <footer>
                 <nav class="round">

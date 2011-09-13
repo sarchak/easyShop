@@ -1,4 +1,8 @@
 Shopcircuit::Application.routes.draw do
+  get "sessions/create"
+
+  get "sessions/destroy"
+
   get "sessions/new"
 
   resources :users
